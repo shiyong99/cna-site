@@ -1,0 +1,27 @@
+{
+  "name": "quartz-cna-mock",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Automated test suite (unit, frontend, E2E) for the Quartz-style / CNA-feature site",
+  "scripts": {
+    "seed": "node scripts/seed.mjs",
+    "build": "node scripts/build.mjs",
+    "serve": "node server.mjs",
+    "test": "npm run build && vitest run && playwright test",
+    "test:unit": "vitest run tests/unit",
+    "test:frontend": "vitest run tests/frontend",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "esbuild": "^0.28.2",
+    "jsdom": "^30.1.1",
+    "vitest": "^5.0.2"
+  },
+  "dependencies": {
+    "pg": "^8.23.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  }
+}
