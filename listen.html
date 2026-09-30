@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Listen — Quartz</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div id="site-header"></div>
+  <div id="site-drawer"></div>
+  <div id="site-search"></div>
+  <div id="site-auth"></div>
+
+  <main>
+    <section class="container">
+      <div class="page-head">
+        <h1>CNA938 Radio</h1>
+        <p class="dek">Listen live to CNA938 and catch up on the best podcasts on news, work and money.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="contact-block" style="display:flex;gap:20px;align-items:center">
+          <div style="width:120px;height:120px;border-radius:16px;overflow:hidden;flex:none"><div class="ph ph--e" data-label="Live"></div></div>
+          <div>
+            <span class="live-badge"><span class="dot"></span> LIVE 11:00AM — 12:00PM</span>
+            <h3 class="mt-8">Eat Drink Singapore with Cheryl Goh</h3>
+            <p class="dek" style="font-size:14px">Food, drink and conversations from across the island.</p>
+            <button class="btn btn--solid btn--sm mt-8">Listen now</button>
+          </div>
+        </div>
+        <div class="contact-block">
+          <h4>This week in podcasts</h4>
+          <div data-fetch="/api/podcasts?block=this-week" data-render="episodes"></div>
+        </div>
+      </div>
+
+      <div class="section-row" id="podcasts"><h2>News &amp; Features</h2></div>
+      <div class="card-grid" data-fetch="/api/series?block=news-features" data-render="series"></div>
+
+      <div class="section-row"><h2>Work &amp; Money</h2></div>
+      <div class="card-grid" data-fetch="/api/series?block=work-money" data-render="series"></div>
+
+      <div class="section-row"><h2>More Podcasts</h2><a class="view-all" href="#">View more</a></div>
+      <div data-fetch="/api/podcasts?block=more" data-render="episodes"></div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
