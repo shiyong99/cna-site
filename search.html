@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search — Quartz</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div id="site-header"></div>
+  <div id="site-drawer"></div>
+  <div id="site-search"></div>
+  <div id="site-auth"></div>
+
+  <main>
+    <div id="search-app"></div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/app.js"></script>
+  <script>
+    (function () {
+      const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+      const params = new URLSearchParams(location.search);
+      const q = params.get('q') || '';
+      let type = params.get('type') || 'All';
+      let cat = params.get('cat') || 'All';
+      document.getElementById('search-query-line').textContent = 'You searched for “' + q + '”';
+
+      function url() {
+        return '/api/search?q=' + encodeURIComponent(q) + '&type=' + encodeURIComponent(type) + '&cat=' + encodeURIComponent(cat);
+      }
+
+      async function render() {
+        const data = await fetch(url()).then((r) => r.json());
+        const canonical = (list, v) => {
+          const hit = list.find((f) => f.toLowerCase() === v.toLowerCase());
+          return hit ? hit : 'All';
+        };
+        const nextType = canonical(data.types.map((t) => t.facet), type);
+        const nextCat = canonical(data.cats.map((c) => c.facet), cat);
+        if (nextType !== type || nextCat !== cat) {
+          type = nextType;
+          cat = nextCat;
+          return render();
+        }
+        document.getElementById('type-facets').innerHTML = data.types
+          .map((t) => `<button class="facet ${type === t.facet ? 'active' : ''}" data-type="${esc(t.facet)}">${esc(t.facet)} ${t.count}</button>`).join('');
+        document.getElementById('cat-facets').innerHTML = data.cats
+          .map((c) => `<button class="facet ${cat === c.facet ? 'active' : ''}" data-cat="${esc(c.facet)}">${esc(c.facet)} ${c.count}</button>`).join('');
+        const tones = ['ph--b', 'ph--c', 'ph--d', 'ph--e', 'ph--f'];
+        document.getElementById('results').innerHTML = data.items.length
+          ? data.items.map((d, i) => `
+            <a class="story" href="article.html">
+              <div class="story__body">
+                <div class="story__eyebrow eyebrow">${esc(d.type)} · ${esc(d.category)}</div>
+                <span class="story__title">${esc(d.title)}</span>
+                <p class="story__dek">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                <span class="meta">${d.category === 'Brand Studio' ? 'brand studio' : 'a few hours ago'}</span>
+              </div>
+              <div class="story__media"><div class="ph ${tones[i % tones.length]}" data-label="${esc(d.category)}"></div></div>
+            </a>`).join('')
+          : '<p class="dek" style="padding:30px 0">No results found.</p>';
+      }
+
+      document.addEventListener('click', (e) => {
+        const t = e.target.closest('[data-type]');
+        if (t) { type = t.dataset.type; render(); }
+        const c = e.target.closest('[data-cat]');
+        if (c) { cat = c.dataset.cat; render(); }
+      });
+
+      render();
+    })();
+  </script>
+</body>
+</html>
