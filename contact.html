@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — Quartz</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div id="site-header"></div>
+  <div id="site-drawer"></div>
+  <div id="site-search"></div>
+  <div id="site-auth"></div>
+
+  <main>
+    <section class="container">
+      <div class="page-head">
+        <h1>Contact Us</h1>
+        <p class="dek">Spotted something newsworthy? Reach out on any of our platforms.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="contact-block"><h4>CNA Eyewitness</h4><p>Send us your news tips, photos and videos.</p><button class="btn btn--solid btn--sm mt-8">Submit a tip</button></div>
+        <div class="contact-block"><h4>Help &amp; Feedback</h4><p>Report a problem or share feedback on the website and apps.</p><button class="btn btn--ghost btn--sm mt-8">Get help</button></div>
+        <div class="contact-block"><h4>WhatsApp</h4><p>Message our newsdesk directly.</p><a class="btn btn--solid btn--sm mt-8" href="#">+65 3138 4696</a></div>
+      </div>
+
+      <div class="section-row"><h2>Editorial &amp; business contacts</h2></div>
+      <div class="grid-2" data-fetch="/api/contacts?group=editorial" data-render="contacts"></div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
