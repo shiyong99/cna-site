@@ -1,0 +1,12 @@
+node_modules
+test-results
+playwright-report
+tests
+data
+.agents
+.vscode
+.git
+.gitignore
+skills-lock.json
+playwright.config.js
+vitest.config.js
