@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quartz — World edition</title>
+  <meta name="description" content="Trusted news and analysis from Singapore and across Asia." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div id="site-header"></div>
+  <div id="site-drawer"></div>
+  <div id="site-search"></div>
+  <div id="site-auth"></div>
+
+  <main>
+    <!-- Hero / lead story -->
+    <section class="container">
+      <div class="hero" data-fetch="/api/articles?block=hero" data-render="hero"></div>
+    </section>
+
+    <!-- Top Stories -->
+    <section class="container">
+      <div class="section-row"><h2>Top Stories</h2><a class="view-all" href="section.html?sec=latest-news">View all</a></div>
+      <div data-fetch="/api/articles?block=top" data-render="story-list"></div>
+    </section>
+
+    <!-- Newsletter (Daily Brief style) -->
+    <section class="container">
+      <div class="newsletter-banner">
+        <h2>The essential news, delivered fresh every morning.</h2>
+        <p class="dek">Join readers who start their day with the Morning Brief — an automated feed of top stories, plus the Week in Review, CNA TODAY Big Read, Recommended Read and CNA Insider.</p>
+        <form class="newsletter-form" onsubmit="return false;">
+          <input type="email" placeholder="Enter your email" aria-label="Email" />
+          <button class="btn btn--solid" type="submit">Subscribe</button>
+        </form>
+        <p class="fineprint">By subscribing you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
+      </div>
+    </section>
+
+    <!-- Singapore -->
+    <section class="container">
+      <div class="section-row"><h2>Singapore</h2><a class="view-all" href="section.html?sec=singapore">View all</a></div>
+      <div class="card-grid" data-fetch="/api/articles?block=singapore" data-render="cards"></div>
+    </section>
+
+    <!-- Asia -->
+    <section class="container">
+      <div class="section-row"><h2>Asia</h2><a class="view-all" href="section.html?sec=asia">View all</a></div>
+      <div class="card-grid" data-fetch="/api/articles?block=asia" data-render="cards"></div>
+    </section>
+
+    <!-- Watch (live TV + shorts) -->
+    <section class="container">
+      <div class="section-row"><h2>Watch</h2><a class="view-all" href="watch.html">View all</a></div>
+      <div class="grid-2">
+        <div class="player-shell">
+          <div class="ph ph--d" data-label=""></div>
+          <div class="player-shell__overlay">
+            <span class="live-badge"><span class="dot"></span> ON AIR — Asia Now</span>
+            <h2 style="color:#fff;margin-top:14px">Watch CNA live, 24/7</h2>
+            <p class="dek" style="color:rgba(255,255,255,.8)">Breaking stories, expert analysis and extensive coverage every hour.</p>
+          </div>
+        </div>
+        <div>
+          <h3 class="mt-8">Shorts</h3>
+          <div data-fetch="/api/videos?block=shorts" data-render="episodes"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Podcasts -->
+    <section class="container">
+      <div class="section-row"><h2>Podcasts</h2><a class="view-all" href="listen.html">Listen to more</a></div>
+      <div class="grid-2" data-fetch="/api/podcasts?block=featured" data-render="episodes"></div>
+    </section>
+
+    <!-- Commentary -->
+    <section class="container">
+      <div class="section-row"><h2>Commentary</h2><a class="view-all" href="section.html?sec=commentary">More commentaries</a></div>
+      <div class="card-grid card-grid--4" data-fetch="/api/articles?block=commentary" data-render="cards4"></div>
+    </section>
+
+    <!-- Discover more on CNA -->
+    <section class="container">
+      <div class="section-row"><h2>Discover more on CNA</h2></div>
+      <div class="card-grid card-grid--4" data-fetch="/api/discover" data-render="discover"></div>
+    </section>
+
+    <!-- Visual stories -->
+    <section class="container">
+      <div class="section-row"><h2>Visual Stories</h2><a class="view-all" href="section.html?sec=visual-stories">View more</a></div>
+      <div class="card-grid" data-fetch="/api/articles?block=visual" data-render="cards"></div>
+    </section>
+
+    <!-- CNA Insider / TODAY / Lifestyle -->
+    <section class="container">
+      <div class="section-row"><h2>CNA Insider · TODAY · Lifestyle</h2><a class="view-all" href="section.html?sec=cna-insider">More on CNA Insider</a></div>
+      <div class="card-grid" data-fetch="/api/articles?block=lifestyle" data-render="cards"></div>
+    </section>
+
+    <!-- Latest videos -->
+    <section class="container">
+      <div class="section-row"><h2>Latest Videos</h2><a class="view-all" href="watch.html">More videos</a></div>
+      <div class="card-grid" data-fetch="/api/videos?block=latest" data-render="cards"></div>
+    </section>
+
+    <!-- Brand Studio -->
+    <section class="container">
+      <div class="section-row"><h2>Brand Studio</h2><a class="view-all" href="advertise.html">Advertise with us</a></div>
+      <div class="grid-2" data-fetch="/api/articles?block=brand" data-render="cards"></div>
+    </section>
+
+    <!-- Telegram promo -->
+    <section class="container">
+      <div class="newsletter-banner" style="padding:30px 24px">
+        <h2 style="font-size:24px">Get bite-sized news via a new cards interface</h2>
+        <p class="dek">Try FAST — the day's news in bullet-point cards you can swipe through.</p>
+        <a class="btn btn--solid" href="fast.html">Try FAST</a>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
