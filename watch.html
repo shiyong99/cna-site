@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Watch — Quartz</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div id="site-header"></div>
+  <div id="site-drawer"></div>
+  <div id="site-search"></div>
+  <div id="site-auth"></div>
+
+  <main>
+    <section class="container">
+      <div class="page-head">
+        <h1>Watch</h1>
+        <p class="dek">Watch CNA's 24/7 livestream — Asia First, East Asia Tonight, Asia Tonight and Singapore Tonight, plus award-winning documentaries and current affairs.</p>
+      </div>
+
+      <div class="player-shell">
+        <div class="ph ph--d" data-label=""></div>
+        <div class="player-shell__overlay">
+          <span class="live-badge"><span class="dot"></span> ON AIR — Asia Now</span>
+          <h2 style="color:#fff;margin-top:16px">Non-stop breaking stories, every hour</h2>
+          <p class="dek" style="color:rgba(255,255,255,.8)">Up next at 1:00pm SGT — When Titans Clash: China's Plan To Create Industries Of The Future</p>
+          <a class="btn btn--solid mt-16" href="#schedule">View full TV schedule</a>
+        </div>
+      </div>
+
+      <div class="section-row"><h2>Recommended for you</h2></div>
+      <div class="card-grid" data-fetch="/api/videos?block=recommended" data-render="cards"></div>
+
+      <div class="section-row"><h2>News Videos</h2><a class="view-all" href="#">More videos</a></div>
+      <div class="grid-2" data-fetch="/api/videos?block=news" data-render="episodes"></div>
+
+      <div class="section-row" id="schedule"><h2>TV Schedule</h2></div>
+      <table class="schedule-table">
+        <thead><tr><th>Time (SGT)</th><th>Programme</th><th>Details</th></tr></thead>
+        <tbody data-fetch="/api/schedule" data-render="schedule"></tbody>
+      </table>
+
+      <div class="section-row"><h2>Documentaries &amp; Shows</h2><a class="view-all" href="#">All programmes</a></div>
+      <div class="card-grid" data-fetch="/api/videos?block=docs" data-render="cards"></div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
