@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Section — Quartz</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div id="site-header"></div>
+  <div id="site-drawer"></div>
+  <div id="site-search"></div>
+  <div id="site-auth"></div>
+
+  <main>
+    <div id="section-app"></div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/app.js"></script>
+  <script>
+    (async function () {
+      const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+      const params = new URLSearchParams(location.search);
+      const key = params.get('sec') || 'latest-news';
+
+      const sections = await fetch('/api/sections').then((r) => r.json());
+      const sec = sections.find((s) => s.key === key) || sections.find((s) => s.key === 'latest-news');
+      document.title = sec.title + ' — Quartz';
+      document.getElementById('sec-title').textContent = sec.title;
+      document.getElementById('sec-dek').textContent = sec.dek;
+
+      document.getElementById('sec-facets').innerHTML = sec.facets
+        .map((f, i) => `<button class="facet ${i === 0 ? 'active' : ''}">${esc(f)}</button>`).join('');
+
+      const articles = await fetch('/api/articles?block=section').then((r) => r.json());
+      const tones = ['ph--b', 'ph--c', 'ph--d', 'ph--e', 'ph--f'];
+      document.getElementById('sec-list').innerHTML = articles.map((a, i) => `
+        <a class="story" href="article.html">
+          <div class="story__body">
+            <div class="story__eyebrow eyebrow">${esc(a.category)}</div>
+            <span class="story__title">${esc(a.title)}</span>
+            <p class="story__dek">${esc(a.dek)}</p>
+            <span class="meta">${esc(a.age)}</span>
+          </div>
+          <div class="story__media"><div class="ph ${tones[i % tones.length]}" data-label="${esc(a.category)}"></div></div>
+        </a>`).join('');
+
+      document.querySelectorAll('#sec-facets .facet').forEach((b) => b.addEventListener('click', () => {
+        document.querySelectorAll('#sec-facets .facet').forEach((x) => x.classList.remove('active'));
+        b.classList.add('active');
+      }));
+    })();
+  </script>
+</body>
+</html>
