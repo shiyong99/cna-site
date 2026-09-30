@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Games — Quartz</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div id="site-header"></div>
+  <div id="site-drawer"></div>
+  <div id="site-search"></div>
+  <div id="site-auth"></div>
+
+  <main>
+    <section class="container">
+      <div class="page-head">
+        <h1>Games</h1>
+        <p class="dek">Stay sharp and challenge yourself with these puzzle games.</p>
+      </div>
+      <div class="thumb-grid" data-fetch="/api/games" data-render="thumbs"></div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
