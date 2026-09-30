@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Newsletters — Quartz</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div id="site-header"></div>
+  <div id="site-drawer"></div>
+  <div id="site-search"></div>
+  <div id="site-auth"></div>
+
+  <main>
+    <section class="container">
+      <div class="page-head">
+        <h1>Newsletters</h1>
+        <p class="dek">Get the best of CNA delivered straight to your inbox. Pick the briefs that fit your day.</p>
+      </div>
+
+      <div class="newsletter-banner">
+        <h2>The essential news, delivered fresh every morning.</h2>
+        <p class="dek">Join readers who start their day with the Morning Brief.</p>
+        <form class="newsletter-form" onsubmit="return false;">
+          <input type="email" placeholder="Enter your email" aria-label="Email" />
+          <button class="btn btn--solid" type="submit">Subscribe</button>
+        </form>
+        <p class="fineprint">By subscribing you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
+      </div>
+
+      <div class="section-row"><h2>Choose your newsletters</h2><button class="btn btn--ghost btn--sm">Select all</button></div>
+      <div class="grid-2" data-fetch="/api/newsletters" data-render="newsletters"></div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
