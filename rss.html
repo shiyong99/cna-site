@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RSS — Quartz</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div id="site-header"></div>
+  <div id="site-drawer"></div>
+  <div id="site-search"></div>
+  <div id="site-auth"></div>
+
+  <main>
+    <section class="container">
+      <div class="page-head">
+        <h1>RSS</h1>
+        <p class="dek">Get the latest news even when you're not on the site. Free for personal, non-commercial use.</p>
+      </div>
+
+      <div class="section-row"><h2>How to access RSS</h2></div>
+      <div class="grid-3">
+        <div class="contact-block"><h4>1. Install a news reader</h4><p>Download a news reader that can display RSS content — many are free, as apps or in-browser.</p></div>
+        <div class="contact-block"><h4>2. Select the content you want</h4><p>Copy the feed URL for the category you want and paste it into your reader.</p></div>
+        <div class="contact-block"><h4>3. Subscribe</h4><p>Updates will be delivered to your reader whenever there's new content.</p></div>
+      </div>
+
+      <div class="section-row"><h2>Available feeds</h2></div>
+      <table class="feed-table">
+        <thead><tr><th>Category</th><th>Feed URL</th></tr></thead>
+        <tbody data-fetch="/api/rss" data-render="feeds"></tbody>
+      </table>
+
+      <p class="meta mt-24">By using the feed you agree to the <a href="#" style="text-decoration:underline">RSS Terms and Conditions</a>.</p>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
