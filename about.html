@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Quartz</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div id="site-header"></div>
+  <div id="site-drawer"></div>
+  <div id="site-search"></div>
+  <div id="site-auth"></div>
+
+  <main>
+    <section class="container">
+      <div class="page-head">
+        <h1>About Us</h1>
+        <p class="dek">Your trusted source for credible news from Singapore and Asia — on air, online and on the go.</p>
+      </div>
+      <div class="article-body narrow" style="padding:0">
+        <p>We deliver breaking news, in-depth analysis, documentaries, podcasts and live coverage across TV, web and mobile. Our newsroom spans correspondents across Asia and the world, producing stories in multiple languages and formats — from visual stories to interactive explainers.</p>
+      </div>
+
+      <div class="section-row" id="presenters"><h2>Our Presenters</h2></div>
+      <div class="people-grid" data-fetch="/api/people?kind=presenter" data-render="people"></div>
+
+      <div class="section-row" id="correspondents"><h2>Our Correspondents</h2></div>
+      <div class="people-grid" data-fetch="/api/people?kind=correspondent" data-render="people"></div>
+
+      <div class="section-row" id="network"><h2>Mediacorp Network</h2></div>
+      <p class="dek">Singapore's leading premium digital network — 15 properties across news, entertainment, lifestyle, sports and property, with brand-safe, transparent and high-viewability advertising.</p>
+      <div class="card-grid card-grid--4 mt-16" data-fetch="/api/network" data-render="network"></div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
